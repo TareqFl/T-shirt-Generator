@@ -10,7 +10,12 @@ const INITIAL_STATE = {
     font: "",
     bool: false,
   },
-  image: null,
+  image: {
+    imageValue: null,
+    imageSize: 10,
+    rtn: 0,
+    bool: false,
+  },
 };
 
 const frontSideStyling = (state = INITIAL_STATE, action) => {
