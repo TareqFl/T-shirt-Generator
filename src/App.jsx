@@ -1,18 +1,11 @@
 import React from "react";
-import {
-  Box,
-  CssBaseline,
-  IconButton,
-  Paper,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Box, CssBaseline, IconButton, Paper, Stack } from "@mui/material";
 import { Container } from "@mui/system";
 import NavBar from "./Components/NavBar";
 
-import Draggable from "react-draggable";
-import Font, { Text } from "react-font";
-import { Resizable } from "react-resizable";
+// import Draggable from "react-draggable";
+// import Font, { Text } from "react-font";
+// import { Resizable } from "react-resizable";
 
 import t from "./Assets/tshirt.svg";
 import LeftSide from "./Components/LeftSide";
@@ -55,7 +48,7 @@ const App = () => {
           flexDirection: "column",
           alignItems: "center",
           gap: 1,
-          borderRadius: "25px",
+          borderRadius: "24px",
         }}
       >
         <IconButton

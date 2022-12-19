@@ -20,7 +20,7 @@ import Images from "./Images";
 import Numbers from "./Numbers";
 import Emojis from "./Emojis";
 import Uploads from "./Uploads";
-import t from "../Assets/tshirt.svg";
+// import t from "../Assets/tshirt.svg";
 const LeftSide = () => {
   const [sdbr, setSdbr] = React.useState(false);
   const [section, setSection] = React.useState(null);
@@ -43,7 +43,6 @@ const LeftSide = () => {
           borderBottom: sdbr ? "6px solid darkorange" : "200px solid #333",
           transition: "all 0.5s",
           position: "relative",
-          transform: sdbr ? "rotate(0)" : "rotate(3deg)",
         }}
       >
         <Typography fontWeight="bold" textAlign="center" color="darkorange">
@@ -180,7 +179,7 @@ const LeftSide = () => {
         sx={{
           height: "100%",
           overflowY: "auto",
-          "::-webkit-scrollbar": { width: "4px" },
+          "::-webkit-scrollbar": { width: "2px" },
           "::-webkit-scrollbar-thumb": {
             backgroundColor: "darkorange",
           },

@@ -14,6 +14,8 @@ export const flags = {
 export const map = {
   lebanon:
     "https://www.customink.com/clipart/assets/images/BAhbB1sHOgZmIiAzNjExNDJfSnVuMDcyMDIxTW9uMTEyNzQ0QU1bCDoGcDoOdGh1bWJuYWlsWwppe1RGaQBpA7aCBQ==",
+  lebanonTwo:
+    "https://www.customink.com/clipart/assets/images/BAhbB1sHOgZmIiAzNjExODRfSnVuMDcyMDIxTW9uMTEyOTQ0QU1bCDoGcDoOdGh1bWJuYWlsWwppe1RGaQBpA-CCBQ==",
 };
 
 export const globe = {

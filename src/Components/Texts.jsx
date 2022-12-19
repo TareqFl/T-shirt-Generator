@@ -12,12 +12,6 @@ import React from "react";
 import Font from "react-font";
 import Controls from "./Controls";
 
-{
-  /* <Font family="Rubik Gemstones">
-<p>Roboto :)</p>
-</Font> */
-}
-
 const Texts = () => {
   const [txt, setTxt] = React.useState("");
   const [controls, setControls] = React.useState({ bool: false, font: "" });
@@ -30,6 +24,7 @@ const Texts = () => {
     "Rubik Spray Paint",
     "Rubik Puddles",
     "Anton",
+    "Bebas Neue",
   ];
 
   return (
@@ -72,9 +67,13 @@ const Texts = () => {
         color="warning"
         autoComplete="off"
         onChange={(e) => setTxt(e.target.value.substring(0, 11))}
+        sx={{ input: { color: "white", fontWeight: "bold" } }}
       />
 
-      <Paper sx={{ textAlign: "center" }}>
+      <Paper
+        elevation={6}
+        sx={{ textAlign: "center", backgroundColor: "transparent", p: 4 }}
+      >
         {controls.bool === false ? (
           txt &&
           fnts.map((fnt, idx) => {
