@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.js": "/T-shirt-Generator/static/js/main.4f398200.js",
+    "main.js": "/T-shirt-Generator/static/js/main.845d34c7.js",
     "static/media/front_large_extended.avif": "/T-shirt-Generator/static/media/front_large_extended.644c28f26708c36a5b58.avif",
     "static/media/tshirt.svg": "/T-shirt-Generator/static/media/tshirt.425b7ec67a21ae56e46f7e1d3bf617ca.svg",
     "index.html": "/T-shirt-Generator/index.html",
-    "main.4f398200.js.map": "/T-shirt-Generator/static/js/main.4f398200.js.map"
+    "main.845d34c7.js.map": "/T-shirt-Generator/static/js/main.845d34c7.js.map"
   },
   "entrypoints": [
-    "static/js/main.4f398200.js"
+    "static/js/main.845d34c7.js"
   ]
 }
