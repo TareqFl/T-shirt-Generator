@@ -1,0 +1,12 @@
+{
+  "files": {
+    "main.js": "/Shirt-Shack/static/js/main.703b3b52.js",
+    "static/media/front_large_extended.avif": "/Shirt-Shack/static/media/front_large_extended.644c28f26708c36a5b58.avif",
+    "static/media/tshirt.svg": "/Shirt-Shack/static/media/tshirt.425b7ec67a21ae56e46f7e1d3bf617ca.svg",
+    "index.html": "/Shirt-Shack/index.html",
+    "main.703b3b52.js.map": "/Shirt-Shack/static/js/main.703b3b52.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.703b3b52.js"
+  ]
+}
