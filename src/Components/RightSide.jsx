@@ -14,11 +14,16 @@ const shirt = "https://svgsilh.com/svg/34481.svg";
 
 const RightSide = () => {
   const [mouse, setMouse] = React.useState(false);
-  const { FrontStyling, Canvas, View } = useSelector((state) => state);
+  const { FrontStyling, Canvas, View, BackStyling } = useSelector(
+    (state) => state
+  );
   const { text, image } = FrontStyling;
   const { value, fntSize, ltrSpace, rt, color, font } = text;
   const { imageValue, imageSize, rtn } = image;
   const { front, back } = Canvas;
+  const { backText, backNumber } = BackStyling;
+  const { textValue } = backText;
+  const { Number } = backNumber;
   return (
     <Box
       flex={2}
@@ -106,6 +111,57 @@ const RightSide = () => {
       {/* End OF FRONT SIDE */}
 
       {/* BACK SIDE */}
+
+      <Draggable bounds="parent">
+        <Box
+          sx={{
+            display: View ? "none" : "inline-block",
+            p: 0,
+            "&:hover": { cursor: "pointer" },
+          }}
+        >
+          <Font family={"Anton"}>
+            <p
+              style={{
+                display: View ? "none" : "block",
+                // margin: 0,
+                // color,
+                // fontSize: fntSize !== 1 && fntSize + "rem",
+                // letterSpacing: ltrSpace !== 1 && ltrSpace + "px",
+                // transform: rt !== 0 && `rotate(${rt}deg)`,
+                transition: "all 0.35s",
+              }}
+            >
+              {textValue}
+            </p>
+          </Font>
+        </Box>
+      </Draggable>
+      <Draggable bounds="parent">
+        <Box
+          sx={{
+            display: View ? "none" : "inline-block",
+            p: 0,
+            "&:hover": { cursor: "pointer" },
+          }}
+        >
+          <Font family={"Anton"}>
+            <p
+              style={{
+                display: View ? "none" : "block",
+                // margin: 0,
+                // color,
+                // fontSize: fntSize !== 1 && fntSize + "rem",
+                // letterSpacing: ltrSpace !== 1 && ltrSpace + "px",
+                // transform: rt !== 0 && `rotate(${rt}deg)`,
+                transition: "all 0.35s",
+              }}
+            >
+              {Number}
+            </p>
+          </Font>
+        </Box>
+      </Draggable>
       {/* END OF BACK SIDE */}
 
       {/* FRONT AND BACK CANVAS */}

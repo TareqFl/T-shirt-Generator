@@ -18,7 +18,7 @@ import React from "react";
 import Texts from "./Texts";
 import Images from "./Images";
 import Numbers from "./Numbers";
-import Emojis from "./Emojis";
+// import Emojis from "./Emojis";
 import Uploads from "./Uploads";
 import { useDispatch, useSelector } from "react-redux";
 import { setPage, setBack, setFront } from "../Actions";
@@ -172,13 +172,20 @@ const LeftSide = () => {
             "&:hover": { backgroundColor: "#fff", color: "darkorange" },
             transition: "all 0.35s",
           }}
-          onClick={() => dispatch(setPage("uploads"))}
+          onClick={() => {
+            dispatch(setPage("uploads"));
+            dispatch(setFront());
+          }}
         >
           <AddPhotoAlternate
             fontSize="large"
             sx={{
               borderRadius: "24px",
               transition: "all 0.35s",
+            }}
+            onClick={() => {
+              dispatch(setPage("uploads"));
+              dispatch(setFront());
             }}
           />
           <Typography fontSize="0.5rem" fontWeight="bold">
@@ -380,7 +387,7 @@ const LeftSide = () => {
         {Page === "texts" && <Texts />}
         {Page === "images" && <Images />}
         {Page === "numbers" && <Numbers />}
-        {Page === "emojis" && <Emojis />}
+        {/* {Page === "emojis" && <Emojis />} */}
         {Page === "uploads" && <Uploads />}
       </Box>
     </Box>

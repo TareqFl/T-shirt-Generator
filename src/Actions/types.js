@@ -6,3 +6,5 @@ export const GREEN_CANVAS = "GREEN_CANVAS";
 export const RED_CANVAS = "RED_CANVAS";
 export const SET_FRONT = "SET_FRONT";
 export const SET_BACK = "SET_BACK";
+export const BACK_STYLES_TEXT = "BACK_STYLES_TEXT";
+export const BACK_STYLES_NUMBER = "BACK_STYLES_NUMBER";

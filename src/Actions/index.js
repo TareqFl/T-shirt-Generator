@@ -7,6 +7,8 @@ import {
   RED_CANVAS,
   SET_FRONT,
   SET_BACK,
+  BACK_STYLES_TEXT,
+  BACK_STYLES_NUMBER,
 } from "./types";
 
 export const setPage = (value) => {
@@ -51,5 +53,19 @@ export const setFront = () => {
 export const setBack = () => {
   return {
     type: SET_BACK,
+  };
+};
+
+export const setBackText = (value) => {
+  return {
+    type: BACK_STYLES_TEXT,
+    payload: value,
+  };
+};
+
+export const setBackNumber = (value) => {
+  return {
+    type: BACK_STYLES_NUMBER,
+    payload: value,
   };
 };

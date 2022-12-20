@@ -29,6 +29,10 @@ const App = () => {
         height: "100%",
         position: "relative",
         pt: 20.1,
+        overflow: "hidden",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
       }}
     >
       <CssBaseline />
@@ -38,7 +42,12 @@ const App = () => {
         <Stack
           display="flex"
           direction="row"
-          sx={{ marginTop: 0, height: "800px" }}
+          sx={{
+            marginTop: 0,
+            height: "800px",
+            position: "relative",
+            zIndex: 1,
+          }}
           spacing={2}
         >
           <LeftSide />
