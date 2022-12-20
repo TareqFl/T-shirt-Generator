@@ -20,14 +20,19 @@ import Images from "./Images";
 import Numbers from "./Numbers";
 import Emojis from "./Emojis";
 import Uploads from "./Uploads";
+import { useDispatch, useSelector } from "react-redux";
+import { setPage, setBack, setFront } from "../Actions";
+
 // import t from "../Assets/tshirt.svg";
 const LeftSide = () => {
   const [sdbr, setSdbr] = React.useState(false);
-  const [section, setSection] = React.useState(null);
+
+  const dispatch = useDispatch();
+  const { Page } = useSelector((state) => state);
   return (
     <Box flex={1} sx={{ display: "flex", height: "800px" }}>
       <Paper
-        elevation={24}
+        elevation={8}
         sx={{
           backgroundColor: "#333333",
           width: "15%",
@@ -41,8 +46,8 @@ const LeftSide = () => {
           alignItems: "center",
           borderTop: sdbr ? "6px solid darkorange" : "200px solid darkOrange",
           borderBottom: sdbr ? "6px solid darkorange" : "200px solid #333",
-          transition: "all 0.5s",
           position: "relative",
+          transition: "all 0.5s",
         }}
       >
         <Typography fontWeight="bold" textAlign="center" color="darkorange">
@@ -57,13 +62,20 @@ const LeftSide = () => {
             "&:hover": { backgroundColor: "#fff", color: "darkorange" },
             transition: "all 0.35s",
           }}
-          onClick={() => setSection("texts")}
+          onClick={() => {
+            dispatch(setFront());
+            dispatch(setPage("texts"));
+          }}
         >
           <FontDownload
             fontSize="large"
             sx={{
               borderRadius: "24px",
               transition: "all 0.35s",
+            }}
+            onClick={() => {
+              dispatch(setFront());
+              dispatch(setPage("texts"));
             }}
           />
           <Typography fontSize="0.5rem" fontWeight="bold">
@@ -79,6 +91,10 @@ const LeftSide = () => {
             "&:hover": { backgroundColor: "#fff", color: "darkorange" },
             transition: "all 0.35s",
           }}
+          onClick={() => {
+            dispatch(setPage("images"));
+            dispatch(setFront());
+          }}
         >
           <Image
             fontSize="large"
@@ -86,7 +102,10 @@ const LeftSide = () => {
               borderRadius: "24px",
               transition: "all 0.35s",
             }}
-            onClick={() => setSection("images")}
+            onClick={() => {
+              dispatch(setPage("images"));
+              dispatch(setFront());
+            }}
           />
           <Typography fontSize="0.5rem" fontWeight="bold">
             Image
@@ -101,7 +120,10 @@ const LeftSide = () => {
             "&:hover": { backgroundColor: "#fff", color: "darkorange" },
             transition: "all 0.35s",
           }}
-          onClick={() => setSection("numbers")}
+          onClick={() => {
+            dispatch(setPage("numbers"));
+            dispatch(setBack());
+          }}
         >
           <SixtyFps
             fontSize="large"
@@ -109,12 +131,16 @@ const LeftSide = () => {
               borderRadius: "24px",
               transition: "all 0.35s",
             }}
+            onClick={() => {
+              dispatch(setPage("numbers"));
+              dispatch(setBack());
+            }}
           />
           <Typography fontSize="0.5rem" fontWeight="bold">
             NUMBER
           </Typography>
         </Button>
-        <Button
+        {/* <Button
           size="small"
           sx={{
             display: "flex",
@@ -123,7 +149,7 @@ const LeftSide = () => {
             "&:hover": { backgroundColor: "#fff", color: "darkorange" },
             transition: "all 0.35s",
           }}
-          onClick={() => setSection("emojis")}
+          onClick={() => dispatch(setPage("emojis"))}
         >
           <EmojiEmotionsOutlined
             fontSize="large"
@@ -131,11 +157,12 @@ const LeftSide = () => {
               borderRadius: "24px",
               transition: "all 0.35s",
             }}
+            onClick={() => dispatch(setBack())}
           />
           <Typography fontSize="0.5rem" fontWeight="bold">
             Emoji
           </Typography>
-        </Button>
+        </Button> */}
         <Button
           size="small"
           sx={{
@@ -145,7 +172,7 @@ const LeftSide = () => {
             "&:hover": { backgroundColor: "#fff", color: "darkorange" },
             transition: "all 0.35s",
           }}
-          onClick={() => setSection("uploads")}
+          onClick={() => dispatch(setPage("uploads"))}
         >
           <AddPhotoAlternate
             fontSize="large"
@@ -185,7 +212,7 @@ const LeftSide = () => {
           },
         }}
       >
-        {section === null && (
+        {Page === null && (
           <Paper
             elevation={8}
             sx={{
@@ -226,7 +253,7 @@ const LeftSide = () => {
                       borderRadius: "12px",
                     },
                   }}
-                  onClick={() => setSection("texts")}
+                  onClick={() => dispatch(setPage("texts"))}
                 >
                   <FontDownload fontSize="large" />
                   <Typography fontWeight="bold" textAlign="center">
@@ -249,7 +276,7 @@ const LeftSide = () => {
                       borderRadius: "12px",
                     },
                   }}
-                  onClick={() => setSection("images")}
+                  onClick={() => dispatch(setPage("images"))}
                 >
                   <Image fontSize="large" />
                   <Typography fontWeight="bold" textAlign="center">
@@ -281,7 +308,7 @@ const LeftSide = () => {
                       borderRadius: "12px",
                     },
                   }}
-                  onClick={() => setSection("numbers")}
+                  onClick={() => dispatch(setPage("numbers"))}
                 >
                   <SixtyFps fontSize="large" />
                   <Typography fontWeight="bold" textAlign="center">
@@ -304,7 +331,7 @@ const LeftSide = () => {
                       borderRadius: "12px",
                     },
                   }}
-                  onClick={() => setSection("emojis")}
+                  onClick={() => dispatch(setPage("emojis"))}
                 >
                   <EmojiEmotionsOutlined fontSize="large" />
                   <Typography fontWeight="bold" textAlign="center">
@@ -326,7 +353,7 @@ const LeftSide = () => {
                       borderRadius: "12px",
                     },
                   }}
-                  onClick={() => setSection("uploads")}
+                  onClick={() => dispatch(setPage("uploads"))}
                 >
                   <AddPhotoAlternate fontSize="large" />
                   <Typography fontWeight="bold" textAlign="center">
@@ -350,11 +377,11 @@ const LeftSide = () => {
             </Grid>
           </Paper>
         )}
-        {section === "texts" && <Texts />}
-        {section === "images" && <Images />}
-        {section === "numbers" && <Numbers />}
-        {section === "emojis" && <Emojis />}
-        {section === "uploads" && <Uploads />}
+        {Page === "texts" && <Texts />}
+        {Page === "images" && <Images />}
+        {Page === "numbers" && <Numbers />}
+        {Page === "emojis" && <Emojis />}
+        {Page === "uploads" && <Uploads />}
       </Box>
     </Box>
   );

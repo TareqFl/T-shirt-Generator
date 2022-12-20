@@ -10,8 +10,18 @@ import NavBar from "./Components/NavBar";
 import t from "./Assets/tshirt.svg";
 import LeftSide from "./Components/LeftSide";
 import RightSide from "./Components/RightSide";
-
+import { useDispatch, useSelector } from "react-redux";
+import {
+  set_Black_Canvas,
+  set_Red_Canvas,
+  set_Green_Canvas,
+  setFront,
+  setBack,
+} from "./Actions";
 const App = () => {
+  const dispatch = useDispatch();
+  const { Canvas } = useSelector((state) => state);
+  const { front, back } = Canvas;
   return (
     <Box
       sx={{
@@ -36,7 +46,7 @@ const App = () => {
         </Stack>
       </Container>
       <Paper
-        elevation={8}
+        elevation={12}
         sx={{
           backgroundColor: "darkorange",
           position: "absolute",
@@ -49,6 +59,7 @@ const App = () => {
           alignItems: "center",
           gap: 1,
           borderRadius: "24px",
+          p: 0.5,
         }}
       >
         <IconButton
@@ -56,7 +67,9 @@ const App = () => {
           sx={{
             backgroundColor: "#333333",
             "&:hover": { backgroundColor: "#333333", transform: "scale(1.3)" },
+            transition: "all 0.35s",
           }}
+          onClick={() => dispatch(set_Black_Canvas())}
         >
           <img src={t} alt="logo" width="100%" />
         </IconButton>
@@ -65,7 +78,9 @@ const App = () => {
           sx={{
             backgroundColor: "#58664f",
             "&:hover": { backgroundColor: "#58664f", transform: "scale(1.3)" },
+            transition: "all 0.35s",
           }}
+          onClick={() => dispatch(set_Green_Canvas())}
         >
           <img src={t} alt="logo" width="100%" />
         </IconButton>
@@ -74,9 +89,70 @@ const App = () => {
           sx={{
             backgroundColor: "#b20b29",
             "&:hover": { backgroundColor: "#b20b29", transform: "scale(1.3)" },
+            transition: "all 0.35s",
           }}
+          onClick={() => dispatch(set_Red_Canvas())}
         >
           <img src={t} alt="logo" width="100%" />
+        </IconButton>
+      </Paper>
+
+      <Paper
+        elevation={12}
+        sx={{
+          backgroundColor: "darkorange",
+          position: "absolute",
+          top: "15%",
+          right: "15%",
+          width: "55px",
+          height: "auto",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: 1,
+          borderRadius: "24px",
+          p: 0.5,
+          zIndex: 10,
+        }}
+      >
+        <IconButton
+          size="small"
+          sx={{
+            "&:hover": { transform: "scale(1.3)" },
+            transition: "all 0.35s",
+          }}
+          onClick={() => dispatch(setFront())}
+        >
+          <img src={front} alt="logo" width="100%" />
+        </IconButton>
+      </Paper>
+      <Paper
+        elevation={12}
+        sx={{
+          backgroundColor: "darkorange",
+          position: "absolute",
+          top: "25%",
+          right: "15%",
+          width: "55px",
+          height: "auto",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: 1,
+          borderRadius: "24px",
+          p: 0.5,
+          zIndex: 10,
+        }}
+      >
+        <IconButton
+          size="small"
+          sx={{
+            "&:hover": { transform: "scale(1.3)" },
+            transition: "all 0.35s",
+          }}
+          onClick={() => dispatch(setBack())}
+        >
+          <img src={back} alt="logo" width="100%" />
         </IconButton>
       </Paper>
     </Box>

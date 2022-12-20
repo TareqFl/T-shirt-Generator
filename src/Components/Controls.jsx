@@ -1,41 +1,37 @@
-import { Box, Button, Slider, Stack, Typography } from "@mui/material";
+import { Box, Slider, Stack, Typography } from "@mui/material";
 import React from "react";
-import Font from "react-font";
-import { HexColorPicker } from "react-colorful";
 
-const Controls = ({ font, text }) => {
-  const [fntSize, setFntSize] = React.useState(1);
-  const [ltrSpace, setLtrSpace] = React.useState(1);
-  const [rt, setRt] = React.useState(0);
-  const [color, setColor] = React.useState("#fff");
+import { HexColorPicker } from "react-colorful";
+import { useDispatch, useSelector } from "react-redux";
+import { frontStyledText } from "../Actions";
+const Controls = () => {
+  const dispatch = useDispatch();
+  const { FrontStyling } = useSelector((state) => state);
+  const { text } = FrontStyling;
+  const { fntSize, ltrSpace, rt, color } = text;
+
   return (
     <Stack display="flex" direction="column" spacing={2} sx={{ width: "100%" }}>
-      <Font family={font}>
-        <p
-          style={{
-            color,
-            fontSize: fntSize !== 1 && fntSize + "rem",
-            letterSpacing: ltrSpace !== 1 && ltrSpace + "px",
-            transform: rt !== 0 && `rotate(${rt}deg)`,
-            transition: "all 0.35s",
-          }}
-        >
-          {text}
-        </p>
-      </Font>
-
       <Box sx={{ width: "100%" }}>
         <Typography fontWeight="bold" variant="h6" fontSize="1.1rem">
           Font Size: {fntSize === 1 ? "default" : fntSize}
         </Typography>
         <Slider
+          value={fntSize}
           size="small"
           min={1}
-          max={3}
+          max={4}
           aria-label="Small"
           valueLabelDisplay="auto"
           sx={{ color: "darkorange" }}
-          onChange={(e) => setFntSize(e.target.value)}
+          onChange={(e) =>
+            dispatch(
+              frontStyledText({
+                ...text,
+                fntSize: e.target.value,
+              })
+            )
+          }
         />
       </Box>
 
@@ -44,13 +40,21 @@ const Controls = ({ font, text }) => {
           Letter-Spacing: {ltrSpace === 1 ? "default" : ltrSpace}
         </Typography>
         <Slider
+          value={ltrSpace}
           size="small"
           min={1}
           max={8}
           aria-label="Small"
           valueLabelDisplay="auto"
           sx={{ color: "darkorange" }}
-          onChange={(e) => setLtrSpace(e.target.value)}
+          onChange={(e) =>
+            dispatch(
+              frontStyledText({
+                ...text,
+                ltrSpace: e.target.value,
+              })
+            )
+          }
         />
       </Box>
 
@@ -59,13 +63,21 @@ const Controls = ({ font, text }) => {
           Rotate: {rt === 0 ? "0deg" : rt + "deg"}
         </Typography>
         <Slider
+          value={rt}
           size="small"
           min={0}
           max={360}
           aria-label="Small"
           valueLabelDisplay="auto"
           sx={{ color: "darkorange" }}
-          onChange={(e) => setRt(e.target.value)}
+          onChange={(e) =>
+            dispatch(
+              frontStyledText({
+                ...text,
+                rt: e.target.value,
+              })
+            )
+          }
         />
       </Box>
 
@@ -73,17 +85,18 @@ const Controls = ({ font, text }) => {
         <Typography fontWeight="bold" variant="h6" fontSize="1.1rem">
           color: {color}
         </Typography>
-        <HexColorPicker color={color} onChange={setColor} />
+        <HexColorPicker
+          color={color}
+          onChange={(c) =>
+            dispatch(
+              frontStyledText({
+                ...text,
+                color: c,
+              })
+            )
+          }
+        />
       </Box>
-
-      <Button
-        fullWidth
-        variant="contained"
-        color="warning"
-        onClick={() => alert(`${text} ${font}`)}
-      >
-        Add Text
-      </Button>
     </Stack>
   );
 };

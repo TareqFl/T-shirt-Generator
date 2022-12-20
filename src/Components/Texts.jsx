@@ -11,10 +11,17 @@ import {
 import React from "react";
 import Font from "react-font";
 import Controls from "./Controls";
+import { useDispatch, useSelector } from "react-redux";
+import { frontStyledText } from "../Actions";
 
 const Texts = () => {
   const [txt, setTxt] = React.useState("");
   const [controls, setControls] = React.useState({ bool: false, font: "" });
+
+  const dispatch = useDispatch();
+  const { FrontStyling } = useSelector((state) => state);
+  const { text } = FrontStyling;
+  const { value, bool } = text;
   const fnts = [
     "Rubik Gemstones",
     "Rubik 80s Fade",
@@ -44,9 +51,13 @@ const Texts = () => {
         </Box>
         <IconButton
           onClick={() =>
-            setControls((prevValue) => {
-              return { ...prevValue, bool: false };
-            })
+            dispatch(
+              frontStyledText({
+                ...text,
+
+                bool: false,
+              })
+            )
           }
           size="small"
           sx={{ display: controls ? "inline-block" : "none" }}
@@ -61,21 +72,29 @@ const Texts = () => {
       {/* Inputs */}
       <TextField
         label="Enter Text Here"
-        value={txt}
+        value={value}
         fullWidth
         variant="filled"
         color="warning"
         autoComplete="off"
-        onChange={(e) => setTxt(e.target.value.substring(0, 11))}
         sx={{ input: { color: "white", fontWeight: "bold" } }}
+        // onChange={(e) => setTxt(e.target.value.substring(0, 11))}
+        onChange={(e) =>
+          dispatch(
+            frontStyledText({
+              ...text,
+              value: e.target.value.substring(0, 15),
+            })
+          )
+        }
       />
 
       <Paper
         elevation={6}
         sx={{ textAlign: "center", backgroundColor: "transparent", p: 4 }}
       >
-        {controls.bool === false ? (
-          txt &&
+        {bool === false ? (
+          text.value &&
           fnts.map((fnt, idx) => {
             return (
               <Button
@@ -91,11 +110,19 @@ const Texts = () => {
                     backgroundColor: "transparent",
                   },
                 }}
-                onClick={() => setControls({ bool: true, font: fnt })}
+                onClick={() =>
+                  dispatch(
+                    frontStyledText({
+                      ...text,
+                      font: fnt,
+                      bool: true,
+                    })
+                  )
+                }
               >
                 <Stack display="flex" direction="column">
                   <Font key={idx} family={fnt}>
-                    <p>{txt}</p>
+                    <p>{text.value}</p>
                   </Font>
                   <Typography variatn="h6" textAlign="center">
                     {fnt}

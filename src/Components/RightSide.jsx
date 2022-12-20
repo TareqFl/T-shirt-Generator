@@ -1,18 +1,24 @@
 import React from "react";
 import { Box, Divider } from "@mui/material";
 
-import front from "../Assets/front_large_extended.avif";
-import rct from "../Assets/logo-og.png";
-
-import Draggable from "react-draggable";
+// import rct from "../Assets/logo-og.png";
+// import Draggable from "react-draggable";
 // import Font from "react-font";
-
 // import r from "../Assets/R.jpg";
+
+import { useSelector } from "react-redux";
+import Font from "react-font";
+import Draggable from "react-draggable";
 
 const shirt = "https://svgsilh.com/svg/34481.svg";
 
 const RightSide = () => {
   const [mouse, setMouse] = React.useState(false);
+  const { FrontStyling, Canvas, View } = useSelector((state) => state);
+  const { text, image } = FrontStyling;
+  const { value, fntSize, ltrSpace, rt, color, font } = text;
+  const { imageValue, imageSize, rtn } = image;
+  const { front, back } = Canvas;
   return (
     <Box
       flex={2}
@@ -41,6 +47,7 @@ const RightSide = () => {
         <Divider
           orientation="vertical"
           sx={{
+            display: mouse ? "block" : "none",
             width: "2px",
             position: "absolute",
             backgroundColor: mouse ? "white" : "rgba(35,35,35,0.3)",
@@ -48,29 +55,81 @@ const RightSide = () => {
             zIndex: 0,
           }}
         />
-        <Draggable bounds={"parent"}>
+
+        {/* FRONT SIDE */}
+        <Draggable bounds="parent">
           <Box
             sx={{
               display: "inline-block",
-              width: "50%",
-              img: {
-                width: "100%",
-                height: "100%",
-                display: "block",
-              },
+              p: 0,
+              "&:hover": { cursor: "pointer" },
             }}
           >
-            <img src={rct} alt={shirt} />
+            <Font family={font}>
+              <p
+                style={{
+                  display: View ? "block" : "none",
+                  margin: 0,
+                  color,
+                  fontSize: fntSize !== 1 && fntSize + "rem",
+                  letterSpacing: ltrSpace !== 1 && ltrSpace + "px",
+                  transform: rt !== 0 && `rotate(${rt}deg)`,
+                  transition: "all 0.35s",
+                }}
+              >
+                {value}
+              </p>
+            </Font>
           </Box>
         </Draggable>
-      </Box>
+        {imageValue && (
+          <Draggable bounds={"parent"}>
+            <Box
+              sx={{
+                display: View ? "inline-block" : "none",
+                width: `${imageSize}%`,
 
+                img: {
+                  width: "100%",
+                  height: "100%",
+                  display: "block",
+                  transform: `rotate(${rtn}deg)`,
+                },
+                "&:hover": { cursor: "pointer" },
+              }}
+            >
+              <img src={imageValue} alt={shirt} width="100%" />
+            </Box>
+          </Draggable>
+        )}
+      </Box>
+      {/* End OF FRONT SIDE */}
+
+      {/* BACK SIDE */}
+      {/* END OF BACK SIDE */}
+
+      {/* FRONT AND BACK CANVAS */}
       <img
         src={front}
-        alt={shirt}
+        alt={"Canvas"}
         width="100%"
         height="100%"
-        style={{ position: "relative", zIndex: 1, display: "block" }}
+        style={{
+          position: "relative",
+          zIndex: 1,
+          display: View ? "block" : "none",
+        }}
+      />
+      <img
+        src={back}
+        alt={"Canvas"}
+        width="100%"
+        height="100%"
+        style={{
+          position: "relative",
+          zIndex: 1,
+          display: View ? "none" : "block",
+        }}
       />
     </Box>
   );
