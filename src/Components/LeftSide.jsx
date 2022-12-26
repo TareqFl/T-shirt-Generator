@@ -1,19 +1,10 @@
 import {
   AddPhotoAlternate,
-  EmojiEmotionsOutlined,
   FontDownload,
   Image,
-  KeyboardArrowRight,
   SixtyFps,
 } from "@mui/icons-material";
-import {
-  Box,
-  Button,
-  Grid,
-  IconButton,
-  Paper,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Grid, Paper, Typography } from "@mui/material";
 import React from "react";
 import Texts from "./Texts";
 import Images from "./Images";
@@ -30,7 +21,7 @@ const LeftSide = () => {
   const dispatch = useDispatch();
   const { Page } = useSelector((state) => state);
   return (
-    <Box flex={1} sx={{ display: "flex", height: "800px" }}>
+    <Box flex={1} sx={{ display: "flex", height: "800px", gap: 2 }}>
       <Paper
         elevation={8}
         sx={{
@@ -47,8 +38,10 @@ const LeftSide = () => {
           borderTop: sdbr ? "6px solid darkorange" : "200px solid darkOrange",
           borderBottom: sdbr ? "6px solid darkorange" : "200px solid #333",
           position: "relative",
-          transition: "all 0.5s",
+          transition: "all 0.75s",
         }}
+        onMouseEnter={() => setSdbr(true)}
+        onMouseLeave={() => setSdbr(false)}
       >
         <Typography fontWeight="bold" textAlign="center" color="darkorange">
           Menu
@@ -195,7 +188,7 @@ const LeftSide = () => {
       </Paper>
 
       {/* Menu Button */}
-      <Box>
+      {/* <Box>
         <IconButton variant="contained" onClick={() => setSdbr(!sdbr)}>
           <KeyboardArrowRight
             fontSize="large"
@@ -205,7 +198,7 @@ const LeftSide = () => {
             }}
           />
         </IconButton>
-      </Box>
+      </Box> */}
 
       {/* Display Buttons */}
       <Box
@@ -315,7 +308,10 @@ const LeftSide = () => {
                       borderRadius: "12px",
                     },
                   }}
-                  onClick={() => dispatch(setPage("numbers"))}
+                  onClick={() => {
+                    dispatch(setPage("numbers"));
+                    dispatch(setBack());
+                  }}
                 >
                   <SixtyFps fontSize="large" />
                   <Typography fontWeight="bold" textAlign="center">
@@ -324,28 +320,6 @@ const LeftSide = () => {
                 </Button>
               </Grid>
 
-              <Grid item>
-                <Button
-                  fullWidth
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    color: "white",
-                    borderRadius: "12px",
-                    "&:hover": {
-                      backgroundColor: "#fff",
-                      color: "darkorange",
-                      borderRadius: "12px",
-                    },
-                  }}
-                  onClick={() => dispatch(setPage("emojis"))}
-                >
-                  <EmojiEmotionsOutlined fontSize="large" />
-                  <Typography fontWeight="bold" textAlign="center">
-                    Emoji
-                  </Typography>
-                </Button>
-              </Grid>
               <Grid item>
                 <Button
                   fullWidth

@@ -9,6 +9,7 @@ import {
   SET_BACK,
   BACK_STYLES_TEXT,
   BACK_STYLES_NUMBER,
+  FRONT_STYLED_UPLOAD,
 } from "./types";
 
 export const setPage = (value) => {
@@ -28,6 +29,13 @@ export const frontStyledText = (value) => {
 export const frontStyledImage = (value) => {
   return {
     type: FRONT_STYLED_IMAGE,
+    payload: value,
+  };
+};
+
+export const frontStyledUpload = (value) => {
+  return {
+    type: FRONT_STYLED_UPLOAD,
     payload: value,
   };
 };

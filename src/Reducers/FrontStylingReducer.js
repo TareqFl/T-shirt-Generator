@@ -1,4 +1,8 @@
-import { FRONT_STYLED_IMAGE, FRONT_STYLED_TEXT } from "../Actions/types.js";
+import {
+  FRONT_STYLED_IMAGE,
+  FRONT_STYLED_TEXT,
+  FRONT_STYLED_UPLOAD,
+} from "../Actions/types.js";
 
 const INITIAL_STATE = {
   text: {
@@ -16,6 +20,12 @@ const INITIAL_STATE = {
     rtn: 0,
     bool: false,
   },
+  upload: {
+    uploadValue: null,
+    uploadSize: 10,
+    uploadRtn: 0,
+    bool: false,
+  },
 };
 
 const frontSideStyling = (state = INITIAL_STATE, action) => {
@@ -24,6 +34,8 @@ const frontSideStyling = (state = INITIAL_STATE, action) => {
       return { ...state, text: action.payload };
     case FRONT_STYLED_IMAGE:
       return { ...state, image: action.payload };
+    case FRONT_STYLED_UPLOAD:
+      return { ...state, upload: action.payload };
     default:
       return state;
   }
