@@ -2,6 +2,7 @@ import {
   SET_PAGE,
   FRONT_STYLED_TEXT,
   FRONT_STYLED_IMAGE,
+  DELETE_FRONT_STYLED_IMAGE,
   BLACK_CANVAS,
   GREEN_CANVAS,
   RED_CANVAS,
@@ -10,6 +11,7 @@ import {
   BACK_STYLES_TEXT,
   BACK_STYLES_NUMBER,
   FRONT_STYLED_UPLOAD,
+  DELETE_FRONT_STYLED_UPLOAD,
 } from "./types";
 
 export const setPage = (value) => {
@@ -38,6 +40,13 @@ export const frontStyledUpload = (value) => {
     type: FRONT_STYLED_UPLOAD,
     payload: value,
   };
+};
+
+export const deleteFrontStyledImage = () => {
+  return { type: DELETE_FRONT_STYLED_IMAGE };
+};
+export const deleteFrontStyledUpload = () => {
+  return { type: DELETE_FRONT_STYLED_UPLOAD };
 };
 
 export const set_Black_Canvas = () => {

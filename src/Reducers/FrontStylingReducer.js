@@ -2,6 +2,8 @@ import {
   FRONT_STYLED_IMAGE,
   FRONT_STYLED_TEXT,
   FRONT_STYLED_UPLOAD,
+  DELETE_FRONT_STYLED_IMAGE,
+  DELETE_FRONT_STYLED_UPLOAD,
 } from "../Actions/types.js";
 
 const INITIAL_STATE = {
@@ -28,6 +30,8 @@ const INITIAL_STATE = {
   },
 };
 
+const { image, upload } = INITIAL_STATE;
+
 const frontSideStyling = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case FRONT_STYLED_TEXT:
@@ -36,6 +40,10 @@ const frontSideStyling = (state = INITIAL_STATE, action) => {
       return { ...state, image: action.payload };
     case FRONT_STYLED_UPLOAD:
       return { ...state, upload: action.payload };
+    case DELETE_FRONT_STYLED_IMAGE:
+      return { ...state, image };
+    case DELETE_FRONT_STYLED_UPLOAD:
+      return { ...state, upload };
     default:
       return state;
   }

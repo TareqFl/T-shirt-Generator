@@ -6,7 +6,8 @@ import { Box, Divider, Fab, Typography } from "@mui/material";
 // import Font from "react-font";
 // import r from "../Assets/R.jpg";
 
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteFrontStyledImage, deleteFrontStyledUpload } from "../Actions";
 import Font from "react-font";
 import Draggable from "react-draggable";
 import { Close } from "@mui/icons-material";
@@ -19,6 +20,9 @@ const RightSide = () => {
     frontImage: false,
     frontUploads: false,
   });
+
+  const dispatch = useDispatch();
+
   const { FrontStyling, Canvas, View, BackStyling } = useSelector(
     (state) => state
   );
@@ -145,6 +149,7 @@ const RightSide = () => {
                     display: frontImage ? "inline-flex" : "none",
                     zIndex: 3,
                   }}
+                  onClick={() => dispatch(deleteFrontStyledImage())}
                 >
                   <Close fontSize="small" />
                 </Fab>
@@ -204,6 +209,7 @@ const RightSide = () => {
                     display: frontUploads ? "inline-flex" : "none",
                     zIndex: 3,
                   }}
+                  onClick={() => dispatch(deleteFrontStyledUpload())}
                 >
                   <Close fontSize="small" />
                 </Fab>
