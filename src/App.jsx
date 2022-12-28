@@ -19,6 +19,7 @@ import {
   setBack,
 } from "./Actions";
 import SnackWindow from "./Components/Window";
+import MyDrawer from "./Components/MyDrawer";
 const App = () => {
   const dispatch = useDispatch();
   const { Canvas } = useSelector((state) => state);
@@ -44,7 +45,7 @@ const App = () => {
         <SnackWindow />
       </Box>
 
-      {/* animated button */}
+      {/* animated  mobile button */}
       <IconButton
         size="large"
         sx={{
@@ -90,6 +91,13 @@ const App = () => {
           }}
         ></Box>
       </IconButton>
+      {/* End of Animated Mobile Button */}
+
+      {/* Mobile Drawer */}
+
+      <MyDrawer clicked={clicked} />
+
+      {/* End Of Mobile Drawer */}
 
       <Container sx={{ height: { xs: "400px", sm: "800px" } }}>
         <Stack
