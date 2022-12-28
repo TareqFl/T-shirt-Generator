@@ -49,7 +49,7 @@ const App = () => {
         size="large"
         sx={{
           position: "absolute",
-          top: "30%",
+          top: "15%",
           left: "10%",
           overflowX: "hidden",
           p: 2,
@@ -58,11 +58,12 @@ const App = () => {
       >
         <Box
           sx={{
+            display: { xs: "inline-flex", sm: "none" },
             position: "absolute",
             width: "24px",
             height: "2px",
             backgroundColor: "darkorange",
-            ml: clicked ? -6 : 0,
+            ml: clicked ? -8 : 0,
             transition: "0.35s",
             "&::before": {
               content: `""`,
@@ -71,7 +72,7 @@ const App = () => {
               height: "2px",
               backgroundColor: "darkorange",
               top: clicked ? 0 : -6,
-              left: clicked ? 24 : 0,
+              left: clicked ? 27 : 0,
               transform: clicked ? "rotate(45deg)" : "rotate(0deg)",
               transition: "0.35s",
             },
@@ -82,7 +83,7 @@ const App = () => {
               height: "2px",
               backgroundColor: "darkorange",
               bottom: clicked ? 0 : -6,
-              left: clicked ? 24 : 0,
+              left: clicked ? 27 : 0,
               transform: clicked ? "rotate(-45deg)" : "rotate(0deg)",
               transition: "0.35s",
             },
