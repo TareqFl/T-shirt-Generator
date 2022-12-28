@@ -17,7 +17,7 @@ const Numbers = () => {
       display="flex"
       direction="column"
       alignItems="start"
-      sx={{ height: "600px", overflow: "auto" }}
+      sx={{ height: "600px", overflow: "auto", width: "250px" }}
       spacing={2}
     >
       <Box>

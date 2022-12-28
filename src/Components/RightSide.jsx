@@ -37,12 +37,13 @@ const RightSide = () => {
   const { frontImage, frontUploads } = hovering;
   return (
     <Box
-      flex={2}
+      // flex={2}
       sx={{
         position: "relative",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        flexGrow: 4,
       }}
     >
       <Box

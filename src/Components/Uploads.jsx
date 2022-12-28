@@ -21,7 +21,13 @@ const Uploads = () => {
   };
 
   return (
-    <Stack flex={1} display="flex" direction="column" spacing={2}>
+    <Stack
+      flex={1}
+      display="flex"
+      direction="column"
+      spacing={2}
+      sx={{ width: "250px" }}
+    >
       <Stack
         flex={1}
         display="flex"

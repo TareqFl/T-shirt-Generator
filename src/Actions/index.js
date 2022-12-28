@@ -45,6 +45,7 @@ export const frontStyledUpload = (value) => {
 export const deleteFrontStyledImage = () => {
   return { type: DELETE_FRONT_STYLED_IMAGE };
 };
+
 export const deleteFrontStyledUpload = () => {
   return { type: DELETE_FRONT_STYLED_UPLOAD };
 };

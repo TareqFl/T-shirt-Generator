@@ -12,213 +12,49 @@ import Numbers from "./Numbers";
 // import Emojis from "./Emojis";
 import Uploads from "./Uploads";
 import { useDispatch, useSelector } from "react-redux";
-import { setPage, setBack, setFront } from "../Actions";
+import { setPage, setBack } from "../Actions";
+import Menu from "./Menu";
 
 // import t from "../Assets/tshirt.svg";
 const LeftSide = () => {
-  const [sdbr, setSdbr] = React.useState(false);
-
   const dispatch = useDispatch();
   const { Page } = useSelector((state) => state);
   return (
-    <Box flex={1} sx={{ display: "flex", height: "800px", gap: 2 }}>
-      <Paper
-        elevation={8}
-        sx={{
-          backgroundColor: "#333333",
-          width: "15%",
-          height: "400px",
-          overflow: "hidden",
-          gap: sdbr ? 2 : 0,
-          borderRadius: "12px",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          borderTop: sdbr ? "6px solid darkorange" : "200px solid darkOrange",
-          borderBottom: sdbr ? "6px solid darkorange" : "200px solid #333",
-          position: "relative",
-          transition: "all 0.75s",
-        }}
-        onMouseEnter={() => setSdbr(true)}
-        onMouseLeave={() => setSdbr(false)}
-      >
-        <Typography fontWeight="bold" textAlign="center" color="darkorange">
-          Menu
-        </Typography>
-        <Button
-          size="small"
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            color: "white",
-            "&:hover": { backgroundColor: "#fff", color: "darkorange" },
-            transition: "all 0.35s",
-          }}
-          onClick={() => {
-            dispatch(setFront());
-            dispatch(setPage("texts"));
-          }}
-        >
-          <FontDownload
-            fontSize="large"
-            sx={{
-              borderRadius: "24px",
-              transition: "all 0.35s",
-            }}
-            onClick={() => {
-              dispatch(setFront());
-              dispatch(setPage("texts"));
-            }}
-          />
-          <Typography fontSize="0.5rem" fontWeight="bold">
-            Text
-          </Typography>
-        </Button>
-        <Button
-          size="small"
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            color: "white",
-            "&:hover": { backgroundColor: "#fff", color: "darkorange" },
-            transition: "all 0.35s",
-          }}
-          onClick={() => {
-            dispatch(setPage("images"));
-            dispatch(setFront());
-          }}
-        >
-          <Image
-            fontSize="large"
-            sx={{
-              borderRadius: "24px",
-              transition: "all 0.35s",
-            }}
-            onClick={() => {
-              dispatch(setPage("images"));
-              dispatch(setFront());
-            }}
-          />
-          <Typography fontSize="0.5rem" fontWeight="bold">
-            Image
-          </Typography>
-        </Button>
-        <Button
-          size="small"
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            color: "white",
-            "&:hover": { backgroundColor: "#fff", color: "darkorange" },
-            transition: "all 0.35s",
-          }}
-          onClick={() => {
-            dispatch(setPage("numbers"));
-            dispatch(setBack());
-          }}
-        >
-          <SixtyFps
-            fontSize="large"
-            sx={{
-              borderRadius: "24px",
-              transition: "all 0.35s",
-            }}
-            onClick={() => {
-              dispatch(setPage("numbers"));
-              dispatch(setBack());
-            }}
-          />
-          <Typography fontSize="0.5rem" fontWeight="bold">
-            NUMBER
-          </Typography>
-        </Button>
-        {/* <Button
-          size="small"
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            color: "white",
-            "&:hover": { backgroundColor: "#fff", color: "darkorange" },
-            transition: "all 0.35s",
-          }}
-          onClick={() => dispatch(setPage("emojis"))}
-        >
-          <EmojiEmotionsOutlined
-            fontSize="large"
-            sx={{
-              borderRadius: "24px",
-              transition: "all 0.35s",
-            }}
-            onClick={() => dispatch(setBack())}
-          />
-          <Typography fontSize="0.5rem" fontWeight="bold">
-            Emoji
-          </Typography>
-        </Button> */}
-        <Button
-          size="small"
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            color: "white",
-            "&:hover": { backgroundColor: "#fff", color: "darkorange" },
-            transition: "all 0.35s",
-          }}
-          onClick={() => {
-            dispatch(setPage("uploads"));
-            dispatch(setFront());
-          }}
-        >
-          <AddPhotoAlternate
-            fontSize="large"
-            sx={{
-              borderRadius: "24px",
-              transition: "all 0.35s",
-            }}
-            onClick={() => {
-              dispatch(setPage("uploads"));
-              dispatch(setFront());
-            }}
-          />
-          <Typography fontSize="0.5rem" fontWeight="bold">
-            Upload
-          </Typography>
-        </Button>
-      </Paper>
-
-      {/* Menu Button */}
-      {/* <Box>
-        <IconButton variant="contained" onClick={() => setSdbr(!sdbr)}>
-          <KeyboardArrowRight
-            fontSize="large"
-            sx={{
-              transform: sdbr && "rotate(180deg)",
-              transition: "transform 0.75s",
-            }}
-          />
-        </IconButton>
-      </Box> */}
+    <Box
+      sx={{
+        display: "flex",
+        height: { xs: "400px", sm: "800px" },
+        flexGrow: { xs: 0, sm: 1 },
+        gap: 2,
+      }}
+    >
+      <Menu />
 
       {/* Display Buttons */}
       <Box
         flex={1}
         sx={{
+          display: { xs: "none", sm: "block" },
           height: "100%",
           overflowY: "auto",
           "::-webkit-scrollbar": { width: "2px" },
           "::-webkit-scrollbar-thumb": {
             backgroundColor: "darkorange",
           },
+          maxWidth: "250px",
         }}
       >
         {Page === null && (
           <Paper
-            elevation={8}
+            elevation={4}
             sx={{
               backgroundColor: "#333333",
               borderRadius: "12px",
               overflow: "hidden",
+              mt: 1,
+              p: 1,
+              width: "250px",
+              display: { xs: "none", sm: "block" },
             }}
           >
             <Typography
@@ -339,19 +175,6 @@ const LeftSide = () => {
                   <AddPhotoAlternate fontSize="large" />
                   <Typography fontWeight="bold" textAlign="center">
                     upload
-                  </Typography>
-                </Button>
-              </Grid>
-              <Grid item xs={12}>
-                <Button
-                  fullWidth
-                  variant="contained"
-                  color="warning"
-                  sx={{ color: "white" }}
-                  onClick={() => window.location.reload()}
-                >
-                  <Typography fontWeight="bold" textAlign="center">
-                    reset
                   </Typography>
                 </Button>
               </Grid>

@@ -18,15 +18,18 @@ import {
   setFront,
   setBack,
 } from "./Actions";
+import SnackWindow from "./Components/Window";
 const App = () => {
   const dispatch = useDispatch();
   const { Canvas } = useSelector((state) => state);
   const { front, back } = Canvas;
+
+  const [clicked, setclicked] = React.useState(false);
   return (
     <Box
       sx={{
+        height: "100vh",
         backgroundColor: "#333",
-        height: "100%",
         position: "relative",
         pt: 20.1,
         overflow: "hidden",
@@ -37,15 +40,64 @@ const App = () => {
     >
       <CssBaseline />
       <NavBar />
+      <Box sx={{ position: "absolute", bottom: 100, left: 0 }}>
+        <SnackWindow />
+      </Box>
 
-      <Container>
+      {/* animated button */}
+      <IconButton
+        size="large"
+        sx={{
+          position: "absolute",
+          top: "30%",
+          left: "10%",
+          overflowX: "hidden",
+          p: 2,
+        }}
+        onClick={() => setclicked(!clicked)}
+      >
+        <Box
+          sx={{
+            position: "absolute",
+            width: "24px",
+            height: "2px",
+            backgroundColor: "darkorange",
+            ml: clicked ? -6 : 0,
+            transition: "0.35s",
+            "&::before": {
+              content: `""`,
+              position: "absolute",
+              width: "100%",
+              height: "2px",
+              backgroundColor: "darkorange",
+              top: clicked ? 0 : -6,
+              left: clicked ? 24 : 0,
+              transform: clicked ? "rotate(45deg)" : "rotate(0deg)",
+              transition: "0.35s",
+            },
+            "&::after": {
+              content: `""`,
+              position: "absolute",
+              width: "100%",
+              height: "2px",
+              backgroundColor: "darkorange",
+              bottom: clicked ? 0 : -6,
+              left: clicked ? 24 : 0,
+              transform: clicked ? "rotate(-45deg)" : "rotate(0deg)",
+              transition: "0.35s",
+            },
+          }}
+        ></Box>
+      </IconButton>
+
+      <Container sx={{ height: { xs: "400px", sm: "800px" } }}>
         <Stack
           display="flex"
           direction="row"
           sx={{
             marginTop: 0,
-            height: "800px",
             position: "relative",
+            height: "100%",
             zIndex: 1,
           }}
           spacing={2}
@@ -111,8 +163,8 @@ const App = () => {
         sx={{
           backgroundColor: "darkorange",
           position: "absolute",
-          top: "15%",
-          right: "15%",
+          top: { xs: "15%", sm: "15%" },
+          right: { xs: "30%", sm: "15%" },
           width: "55px",
           height: "auto",
           display: "flex",
@@ -140,8 +192,8 @@ const App = () => {
         sx={{
           backgroundColor: "darkorange",
           position: "absolute",
-          top: "25%",
-          right: "15%",
+          top: { xs: "25%", sm: "25%" },
+          right: { xs: "30%", sm: "15%" },
           width: "55px",
           height: "auto",
           display: "flex",
