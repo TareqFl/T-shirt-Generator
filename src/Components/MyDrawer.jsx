@@ -38,7 +38,7 @@ const MyDrawer = ({ clicked }) => {
                 color: "white",
                 "&:hover": { backgroundColor: "#fff", color: "darkorange" },
                 mt: 0.5,
-                transition: "all 0.35s",
+                transition: "all 0.75s",
               }}
               onClick={() => {
                 switch (mn) {

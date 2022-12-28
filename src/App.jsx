@@ -20,6 +20,7 @@ import {
 } from "./Actions";
 import SnackWindow from "./Components/Window";
 import MyDrawer from "./Components/MyDrawer";
+import { GitHub } from "@mui/icons-material";
 const App = () => {
   const dispatch = useDispatch();
   const { Canvas } = useSelector((state) => state);
@@ -40,6 +41,16 @@ const App = () => {
       }}
     >
       <CssBaseline />
+      {/* My Github */}
+      <IconButton
+        size="large"
+        sx={{ position: "absolute", bottom: 0, right: 25 }}
+        onClick={() =>
+          window.open("https://github.com/TareqFl/T-shirt-Generator")
+        }
+      >
+        <GitHub fontSize="large" sx={{ color: "darkorange" }} />
+      </IconButton>
       <NavBar />
       <Box sx={{ position: "absolute", bottom: 100, left: 0 }}>
         <SnackWindow />
