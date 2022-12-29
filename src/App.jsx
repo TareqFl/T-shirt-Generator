@@ -33,7 +33,7 @@ const App = () => {
         height: "100vh",
         backgroundColor: "#333",
         position: "relative",
-        pt: { xs: "50%", sm: "90%", lg: 20.1 },
+        pt: { xs: "50%", sm: "90%", lg: 25 },
         overflowY: "auto",
         display: "flex",
         justifyContent: "center",
