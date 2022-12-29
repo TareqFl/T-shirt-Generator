@@ -3,10 +3,6 @@ import { Box, CssBaseline, IconButton, Paper, Stack } from "@mui/material";
 import { Container } from "@mui/system";
 import NavBar from "./Components/NavBar";
 
-// import Draggable from "react-draggable";
-// import Font, { Text } from "react-font";
-// import { Resizable } from "react-resizable";
-
 import t from "./Assets/tshirt.svg";
 import LeftSide from "./Components/LeftSide";
 import RightSide from "./Components/RightSide";
@@ -44,7 +40,26 @@ const App = () => {
       {/* My Github */}
       <IconButton
         size="large"
-        sx={{ position: "absolute", bottom: 0, right: 25 }}
+        sx={{
+          position: "absolute",
+          bottom: 0,
+          right: 25,
+          display: { xs: "inline-flex", sm: "none", md: "inline-flex" },
+        }}
+        onClick={() =>
+          window.open("https://github.com/TareqFl/T-shirt-Generator")
+        }
+      >
+        <GitHub fontSize="large" sx={{ color: "darkorange" }} />
+      </IconButton>
+      <IconButton
+        size="large"
+        sx={{
+          position: "absolute",
+          top: "20%",
+          left: 25,
+          display: { xs: "none", sm: "inline-flex", md: "none" },
+        }}
         onClick={() =>
           window.open("https://github.com/TareqFl/T-shirt-Generator")
         }
@@ -55,7 +70,6 @@ const App = () => {
       <Box sx={{ position: "absolute", bottom: 100, left: 0 }}>
         <SnackWindow />
       </Box>
-
       {/* animated  mobile button */}
       <IconButton
         size="large"
@@ -103,13 +117,9 @@ const App = () => {
         ></Box>
       </IconButton>
       {/* End of Animated Mobile Button */}
-
       {/* Mobile Drawer */}
-
       <MyDrawer clicked={clicked} />
-
       {/* End Of Mobile Drawer */}
-
       <Container sx={{ height: { xs: "400px", sm: "800px" } }}>
         <Stack
           display="flex"
@@ -177,7 +187,6 @@ const App = () => {
           <img src={t} alt="logo" width="100%" />
         </IconButton>
       </Paper>
-
       <Paper
         elevation={12}
         sx={{
