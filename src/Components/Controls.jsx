@@ -23,7 +23,30 @@ const Controls = () => {
           max={4}
           aria-label="Small"
           valueLabelDisplay="auto"
-          sx={{ color: "darkorange" }}
+          sx={{
+            color: "darkorange",
+            display: { xs: "none", sm: "inline-block" },
+          }}
+          onChange={(e) =>
+            dispatch(
+              frontStyledText({
+                ...text,
+                fntSize: e.target.value,
+              })
+            )
+          }
+        />
+        <Slider
+          value={fntSize}
+          size="small"
+          min={1}
+          max={2}
+          aria-label="Small"
+          valueLabelDisplay="auto"
+          sx={{
+            color: "darkorange",
+            display: { xs: "inline-block", sm: "none" },
+          }}
           onChange={(e) =>
             dispatch(
               frontStyledText({
@@ -46,7 +69,9 @@ const Controls = () => {
           max={8}
           aria-label="Small"
           valueLabelDisplay="auto"
-          sx={{ color: "darkorange" }}
+          sx={{
+            color: "darkorange",
+          }}
           onChange={(e) =>
             dispatch(
               frontStyledText({
@@ -69,7 +94,9 @@ const Controls = () => {
           max={360}
           aria-label="Small"
           valueLabelDisplay="auto"
-          sx={{ color: "darkorange" }}
+          sx={{
+            color: "darkorange",
+          }}
           onChange={(e) =>
             dispatch(
               frontStyledText({
