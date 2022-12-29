@@ -237,6 +237,7 @@ const RightSide = () => {
                 display: View ? "none" : "inline-block",
                 margin: 0,
                 color: "white",
+                fontSize: { xs: "3.5rem", sm: "6rem" },
                 transition: "all 0.35s",
               }}
               variant="h1"
@@ -252,6 +253,7 @@ const RightSide = () => {
                 display: View ? "none" : "inline-block",
                 margin: 0,
                 color: "white",
+                fontSize: { xs: "3.5rem", sm: "6rem" },
                 letterSpacing: "4px",
                 transition: "all 0.35s",
               }}
