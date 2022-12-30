@@ -39,7 +39,7 @@ const Numbers = () => {
           dispatch(
             setBackText({
               ...backText,
-              textValue: e.target.value.substring(0, 15).toUpperCase(),
+              textValue: e.target.value.substring(0, 5).toUpperCase(),
             })
           )
         }
@@ -77,7 +77,7 @@ const Numbers = () => {
           dispatch(
             setBackNumber({
               ...backNumber,
-              Number: e.target.value.substring(0, 15).toUpperCase(),
+              Number: e.target.value.substring(0).toUpperCase(),
             })
           )
         }

@@ -35,6 +35,9 @@ const RightSide = () => {
   const { textValue } = backText;
   const { Number } = backNumber;
   const { frontImage, frontUploads } = hovering;
+
+  const [edtTxt, setEdtTxt] = React.useState();
+
   return (
     <Box
       // flex={2}
