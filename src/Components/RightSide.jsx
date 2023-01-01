@@ -114,7 +114,7 @@ const RightSide = () => {
                   display: "block",
                   transform: `rotate(${rtn}deg)`,
                 },
-                "&:hover": { cursor: "pointer" },
+                "&:hover": { cursor: "grab" },
               }}
               onMouseEnter={() =>
                 setHovering((prevValue) => {

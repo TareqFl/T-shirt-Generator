@@ -1,14 +1,24 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Close, Delete } from "@mui/icons-material";
+import { Box, Button, Fab, IconButton, Stack, Typography } from "@mui/material";
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setPage, setBack, setFront } from "../Actions";
+import {
+  setPage,
+  setBack,
+  setFront,
+  deleteFrontStyledImage,
+  deleteFrontStyledUpload,
+} from "../Actions";
 import Images from "./Images";
 import Numbers from "./Numbers";
 import Texts from "./Texts";
 import Uploads from "./Uploads";
 const MyDrawer = ({ clicked }) => {
   const dispatch = useDispatch();
-  const { Page } = useSelector((state) => state);
+  const { Page, FrontStyling } = useSelector((state) => state);
+  const { image, upload } = FrontStyling;
+  const { imageValue } = image;
+  const { uploadValue } = upload;
   const mnuAr = ["Text", "Image", "Number", "Upload"];
   return (
     <Box
@@ -63,6 +73,42 @@ const MyDrawer = ({ clicked }) => {
             </Button>
           );
         })}
+        <Stack display="flex" direction="column">
+          {imageValue && (
+            <Box sx={{ position: "relative" }}>
+              <IconButton
+                size="small"
+                sx={{
+                  position: "absolute",
+                  top: 0,
+                  right: 0,
+                  display: imageValue ? "inline-flex" : "none",
+                }}
+                onClick={() => dispatch(deleteFrontStyledImage())}
+              >
+                <Delete sx={{ color: "darkorange" }} />
+              </IconButton>
+              <img src={imageValue} alt="picked" width="100%" />
+            </Box>
+          )}
+          {uploadValue && (
+            <Box sx={{ position: "relative" }}>
+              <IconButton
+                size="small"
+                sx={{
+                  position: "absolute",
+                  top: 0,
+                  right: 0,
+                  display: uploadValue ? "inline-flex" : "none",
+                }}
+                onClick={() => dispatch(deleteFrontStyledUpload())}
+              >
+                <Delete sx={{ color: "darkorange" }} />
+              </IconButton>
+              <img src={uploadValue} alt="picked" width="100%" />
+            </Box>
+          )}
+        </Stack>
       </Box>
       <Box flex={2}>
         {Page === "texts" && <Texts />}
