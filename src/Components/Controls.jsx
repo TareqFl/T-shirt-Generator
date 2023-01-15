@@ -66,7 +66,7 @@ const Controls = () => {
           value={ltrSpace}
           size="small"
           min={1}
-          max={8}
+          max={4}
           aria-label="Small"
           valueLabelDisplay="auto"
           sx={{

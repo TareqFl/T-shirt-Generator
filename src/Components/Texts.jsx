@@ -89,7 +89,7 @@ const Texts = () => {
           dispatch(
             frontStyledText({
               ...text,
-              value: e.target.value.substring(0, 15),
+              value: e.target.value.substring(0, 5),
             })
           )
         }
