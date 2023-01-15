@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.js": "/T-shirt-Generator/static/js/main.6bd259e9.js",
+    "main.js": "/T-shirt-Generator/static/js/main.fe15b0cd.js",
     "static/media/tshirt.svg": "/T-shirt-Generator/static/media/tshirt.425b7ec67a21ae56e46f7e1d3bf617ca.svg",
     "index.html": "/T-shirt-Generator/index.html",
-    "main.6bd259e9.js.map": "/T-shirt-Generator/static/js/main.6bd259e9.js.map"
+    "main.fe15b0cd.js.map": "/T-shirt-Generator/static/js/main.fe15b0cd.js.map"
   },
   "entrypoints": [
-    "static/js/main.6bd259e9.js"
+    "static/js/main.fe15b0cd.js"
   ]
 }
